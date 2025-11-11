@@ -1,3 +1,6 @@
+import dotenv from "dotenv";
+dotenv.config();
+
 const navbar = document.querySelector(".navbar");
 
 window.addEventListener("scroll", () => {
@@ -57,7 +60,7 @@ function renderListProject(data) {
 
 async function getProjects() {
   try {
-    const res = await fetch("https://my-portfolio-1oua.onrender.com/api/projects");
+    const res = await fetch(`${process.env.URL}/api/projects`);
     const data = await res.json();
     renderListProject(data);
     console.log(data);
