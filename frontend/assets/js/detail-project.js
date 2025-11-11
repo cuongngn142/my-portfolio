@@ -77,7 +77,7 @@ async function loadProjectDetail() {
           p.urlSource || "#"
         }" class="btn btn-outline-dark btn-lg mb-2" target="_blank">Source Code</a>
         
-        <p class="fw-bold fs-6 text-danger">Chú ý: Một số project deploy khi click View Demo sẽ cần một khoảng thời gian ngắn để chạy lại server.</p>
+        <p class="fw-bold fs-6 text-danger">Chú ý: Một số project có backend deploy riêng sẽ cần phải reload trang lại 1-2 lần để chạy lại server.</p>
       </div>
     `;
 }
