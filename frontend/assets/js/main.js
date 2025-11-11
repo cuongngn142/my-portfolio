@@ -1,4 +1,4 @@
-const URL = "https://my-portfolio-1oua.onrender.com";
+const url = "https://my-portfolio-1oua.onrender.com";
 
 const navbar = document.querySelector(".navbar");
 
@@ -59,7 +59,7 @@ function renderListProject(data) {
 
 async function getProjects() {
   try {
-    const res = await fetch(`${URL}/api/projects`);
+    const res = await fetch(`${url}/api/projects`);
     const data = await res.json();
     renderListProject(data);
     console.log(data);
