@@ -1,0 +1,87 @@
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+#home {
+  margin-top: 100px;
+  background: linear-gradient(135deg, #fffbea 0%, #fff2cc 50%, #ffe6a7 100%);
+  position: relative;
+  padding: 120px 0;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 85%);
+}
+.name-hover {
+  display: inline-block; /*scale không ảnh hưởng dòng khác */
+  transition: transform 0.2s ease-in-out;
+  transform-origin: center; /* scale từ chính giữa */
+}
+
+.name-hover:hover {
+  transform: scale(1.1);
+}
+
+.btn-scale {
+  transition: transform 0.2s ease-in-out;
+}
+
+.btn-scale:hover {
+  transform: scale(1.1);
+}
+
+.icon-social {
+  transition: transform 0.2s ease-in-out;
+}
+
+.icon-social:hover {
+  transform: scale(1.1);
+}
+
+.navbar-white {
+  background-color: #fff;
+  transition: background 0.3s;
+}
+
+.navbar-scroll {
+  background-color: #fff2cc;
+  transition: background 0.3s;
+}
+
+.text-truncate-multi {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.img-project {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16/9; /* tỉ lệ ảnh 16:9 */
+  object-fit: cover;
+}
+
+.card-hover {
+  transition: transform 0.2s ease-in-out;
+  cursor: pointer;
+}
+.card-hover:hover {
+  transform: translateY(-5px);
+}
+
+.container-size {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.form-control:focus {
+  border-color: #e9be7d; /* màu viền khi focus */
+  box-shadow: 0 0 0 0.2rem rgba(255, 153, 0, 0.25); /* optional: shadow xung quanh */
+}
+
+.btn-contact-hover {
+  transition: transform 0.2s ease-in-out;
+}
+
+.btn-contact-hover:hover {
+  transform: translateY(-5px);
+}

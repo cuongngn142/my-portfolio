@@ -1,0 +1,59 @@
+{
+  "name": "Website Xem Phim",
+  "description": "Một trang web xem phim trực tuyến SPA",
+  "urlImage": "http://localhost:3000/uploads/img-project-webXemPhim.png",
+  "projectTimeline": "2025-04-22 - 2025-06-28",
+  "role": "Fullstack Developer",
+  "technology": "HTML, CSS, JavaScript, Node.js, Express, SQLite",
+  "mainFeatures": [
+    "Website SPA thân thiện với người dùng",
+    "Đăng ký và đăng nhập người dùng",
+    "Trang chi tiết phim với trailer, mô tả, diễn viên",
+    "Thêm phim vào danh sách yêu thích",
+    "Đánh giá phim và bình luận về phim",
+    "Phân loại phim theo thể loại",
+    "Giao diện dashboard admin dễ quản lý"
+  ],
+  "urlDemo": "",
+  "urlSource": "https://github.com/cuongngn142/webXemPhimr",
+  "urlVideoDemo": "http://localhost:3000/uploads/demo-WebXemPhim.mp4"
+}
+
+{
+  "name": "Website Luyện Code",
+  "description": "Một trang web học tập và luyện các bài tập code cơ bản",
+  "urlImage": "http://localhost:3000/uploads/img-project-webCodeMaster.png",
+  "projectTimeline": "2025-03-10 – 2025-05-25",
+  "role": "Front-End Developer with Partial Back-End",
+  "technology": "HTML, CSS, JavaScript, Node.js, Express, EJS, SQLite",
+  "mainFeatures": [
+    "Đăng ký và đăng nhập xác thực người dùng",
+    "Trang bài tập chi tiết với đề, hướng dẫn và input/output mẫu",
+    "Giao diện làm bài tập trực tiếp trên trình duyệt",
+    "Tự động chấm điểm và hiển thị kết quả",
+    "Bảng xếp hạng học viên theo điểm số và tiến độ",
+    "Phân loại bài tập theo chủ đề hoặc độ khó",
+    "Dashboard admin quản lý bài tập, user và kết quả"
+  ],
+  "urlDemo": "https://deloy-code-master.onrender.com/",
+  "urlSource": "https://github.com/cuongngn142/code-master",
+  "urlVideoDemo": "http://localhost:3000/uploads/demo-WebCodeMaster.mp4"
+}
+
+{
+  "name": "Todo-List With LocalStorage",
+  "description": "Một trang web cơ bản về todo list kết hợp lưu trữ trên localStorage trình duyệt",
+  "urlImage": "http://localhost:3000/uploads/img-project-webTodoList.png",
+  "projectTimeline": "2025-05-10 13:55:14 (UTC+7)",
+  "role": "Front-End Developer",
+  "technology": "HTML, CSS, JavaScript",
+  "mainFeatures": [
+    "Tạo, chỉnh sửa, xóa công việc (tasks) trực tiếp trên trình duyệt",
+    "Đánh dấu công việc hoàn thành hoặc chưa hoàn thành",
+    "Lưu trữ toàn bộ công việc trên localStorage, giữ dữ liệu khi reload trang",
+    "Không cần backend, toàn bộ dữ liệu lưu trữ phía client"
+  ],
+  "urlDemo": "https://todo-list-cookie.onrender.com/",
+  "urlSource": "https://github.com/cuongngn142/todo-list-cookie",
+  "urlVideoDemo": "http://localhost:3000/uploads/demo-WebToDoList.mp4"
+}
