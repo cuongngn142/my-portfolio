@@ -57,7 +57,7 @@ function renderListProject(data) {
 
 async function getProjects() {
   try {
-    const res = await fetch("http://localhost:3000/api/projects");
+    const res = await fetch("https://my-portfolio-1oua.onrender.com/api/projects");
     const data = await res.json();
     renderListProject(data);
     console.log(data);
