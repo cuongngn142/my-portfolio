@@ -1,5 +1,4 @@
-import dotenv from "dotenv";
-dotenv.config();
+const URL = "https://my-portfolio-1oua.onrender.com";
 
 const navbar = document.querySelector(".navbar");
 
@@ -60,7 +59,7 @@ function renderListProject(data) {
 
 async function getProjects() {
   try {
-    const res = await fetch(`${process.env.URL}/api/projects`);
+    const res = await fetch(`${URL}/api/projects`);
     const data = await res.json();
     renderListProject(data);
     console.log(data);
