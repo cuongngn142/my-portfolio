@@ -1,11 +1,9 @@
-import dotenv from "dotenv";
-dotenv.config();
-
+const URL = "https://my-portfolio-1oua.onrender.com";
 async function loadProjectDetail() {
   const params = new URLSearchParams(window.location.search);
   const id = params.get("id");
   if (!id) return;
-  const res = await fetch(`${process.env.URL}/api/projects/${id}`);
+  const res = await fetch(`${URL}/api/projects/${id}`);
   const p = await res.json();
   document.title = "Chi tiết dự án - " + p.name;
   const container = document.querySelector(".container");
