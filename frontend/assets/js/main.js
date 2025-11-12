@@ -1,5 +1,5 @@
 const url = "https://my-portfolio-1oua.onrender.com";
-
+// const url = "http://localhost:3000";
 const navbar = document.querySelector(".navbar");
 
 window.addEventListener("scroll", () => {
@@ -51,7 +51,6 @@ function renderListProject(data) {
   viewBtns.forEach((btn) => {
     btn.addEventListener("click", (e) => {
       const projectId = e.currentTarget.dataset.id;
-      console.log("Project clicked:", projectId);
       window.location.href = `./pages/detail-project.html?id=${projectId}`;
     });
   });
@@ -62,10 +61,48 @@ async function getProjects() {
     const res = await fetch(`${url}/api/projects`);
     const data = await res.json();
     renderListProject(data);
-    console.log(data);
   } catch (err) {
     console.error(err);
   }
 }
 
 getProjects();
+
+function isValidGmail(email) {
+  const regex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+  return regex.test(email);
+}
+
+const form = document.getElementById("contact-form");
+
+form.addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const emailContent = form.email.value;
+  if (!isValidGmail(emailContent)) {
+    const content = document.getElementById("label-content");
+    if (!content) return;
+    content.textContent = "Please enter a valid Gmail address.";
+    return;
+  }
+  const messageContent = form.message.value;
+
+  const data = {
+    email: emailContent,
+    message: messageContent,
+    status: "new",
+  };
+
+  fetch(`${url}/api/contacts`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  })
+    .then((res) => res.json())
+    .then((result) => {
+      form.reset();
+    })
+    .catch((err) => console.error(err));
+});

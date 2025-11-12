@@ -190,10 +190,19 @@
     <section class="py-5" id="contact-me">
       <div class="container container-size">
         <h1 class="fs-2 fw-bold my-4 text-center">Contact Me</h1>
-        <form>
+        <form id="contact-form">
           <div class="mb-3">
             <label for="email" class="form-label">Email</label>
-            <input type="email" class="form-control rounded-pill" id="email" />
+            <input
+              type="text"
+              class="form-control rounded-pill"
+              id="email"
+              required
+            />
+            <div
+              id="label-content"
+              class="mt-1 text-danger small"
+            ></div>
           </div>
 
           <div class="mb-3">
@@ -202,6 +211,7 @@
               class="form-control rounded-4"
               id="message"
               rows="4"
+              required
             ></textarea>
           </div>
 
