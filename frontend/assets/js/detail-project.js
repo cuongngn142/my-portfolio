@@ -1,5 +1,5 @@
  const url = "https://my-portfolio-1oua.onrender.com";
-// const url = "http://localhost:3000";
+ //const url = "http://localhost:3000";
 
 async function loadProjectDetail() {
   const params = new URLSearchParams(window.location.search);

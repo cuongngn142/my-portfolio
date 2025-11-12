@@ -1,5 +1,5 @@
 const url = "https://my-portfolio-1oua.onrender.com";
-// const url = "http://localhost:3000";
+//const url = "http://localhost:3000";
 const navbar = document.querySelector(".navbar");
 
 window.addEventListener("scroll", () => {
@@ -77,12 +77,12 @@ const form = document.getElementById("contact-form");
 
 form.addEventListener("submit", function (e) {
   e.preventDefault();
-
   const emailContent = form.email.value;
+  const content = document.getElementById("label-content");
+
   if (!isValidGmail(emailContent)) {
-    const content = document.getElementById("label-content");
     if (!content) return;
-    content.textContent = "Please enter a valid Gmail address.";
+    content.textContent = "Please enter a valid email address.";
     return;
   }
   const messageContent = form.message.value;
@@ -100,9 +100,17 @@ form.addEventListener("submit", function (e) {
     },
     body: JSON.stringify(data),
   })
-    .then((res) => res.json())
+    .then((res) => {
+      res.json();
+      if (res.ok) {
+        window.location.href = "./pages/completed.html";
+      } else {
+        console.error("Lỗi khi gửi dữ liệu");
+      }
+    })
     .then((result) => {
       form.reset();
+      content.textContent = "";
     })
     .catch((err) => console.error(err));
 });
