@@ -16,7 +16,19 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 //Cấu hình Helmet để bảo vệ header HTTP
-app.use(helmet());
+helmet({
+  contentSecurityPolicy: {
+    directives: {
+      defaultSrc: ["'self'"],
+      scriptSrc: ["'self'"],
+      styleSrc: ["'self'", "'unsafe-inline'"],
+      imgSrc: ["'self'", "https://my-portfolio-fe.onrender.com", "data:"],
+      mediaSrc: ["'self'", "https://my-portfolio-fe.onrender.com"],
+      objectSrc: ["'none'"],
+      frameAncestors: ["'self'"],
+    },
+  },
+});
 
 // Cấu hình CORS — chỉ cho phép domain frontend gọi
 app.use(
@@ -53,6 +65,7 @@ app.use(
     const origin = req.get("Origin");
     if (allowedOrigins.includes(origin)) {
       res.header("Access-Control-Allow-Origin", origin);
+      res.header("Cross-Origin-Resource-Policy", "cross-origin");
     }
     next();
   },
