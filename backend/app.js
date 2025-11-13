@@ -21,7 +21,7 @@ app.use(helmet());
 // Cấu hình CORS — chỉ cho phép domain frontend gọi
 app.use(
   cors({
-    origin: ["https://my-portfolio-fe.onrender.com", "http://127.0.0.1:5500"],
+    origin: ["https://my-portfolio-fe.onrender.com"],
     methods: ["GET", "POST", "PUT", "DELETE"],
   })
 );
@@ -44,11 +44,18 @@ const __dirname = path.dirname(__filename);
 app.use(express.json());
 
 // Static uploads với CORS riêng cho thẻ <img>/<video>
+
+const allowedOrigins = ["https://my-portfolio-fe.onrender.com"];
+
 app.use(
   "/uploads",
-  cors({
-    origin: ["https://my-portfolio-fe.onrender.com", "http://127.0.0.1:5500"],
-  }),
+  (req, res, next) => {
+    const origin = req.get("Origin");
+    if (allowedOrigins.includes(origin)) {
+      res.header("Access-Control-Allow-Origin", origin);
+    }
+    next();
+  },
   express.static(path.join(__dirname, "uploads"))
 );
 
