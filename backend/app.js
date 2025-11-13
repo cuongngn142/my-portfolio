@@ -26,6 +26,12 @@ app.use(
   })
 );
 
+app.use(
+  "/uploads",
+  cors({ origin: "https://my-portfolio-fe.onrender.com" }),
+  express.static("uploads")
+);
+
 //Giới hạn request — mỗi IP chỉ được gửi 100 request / 15 phút
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 phút
@@ -42,7 +48,19 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 app.use(express.json());
-app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+
+// Static uploads với CORS riêng cho thẻ <img>/<video>
+app.use(
+  "/uploads",
+  (req, res, next) => {
+    res.header(
+      "Access-Control-Allow-Origin",
+      "https://my-portfolio-fe.onrender.com"
+    );
+    next();
+  },
+  express.static(path.join(__dirname, "uploads"))
+);
 
 //routers
 app.use("/api/projects", projectRoutes);
