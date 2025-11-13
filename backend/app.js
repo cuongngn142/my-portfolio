@@ -14,37 +14,13 @@ connectDB();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-
 //Cấu hình Helmet để bảo vệ header HTTP
-app.use(
-  helmet({
-    contentSecurityPolicy: {
-      directives: {
-        defaultSrc: ["'self'"],
-        scriptSrc: ["'self'"],
-        styleSrc: ["'self'", "'unsafe-inline'"],
-        imgSrc: [
-          "'self'",
-          "https://my-portfolio-fe.onrender.com",
-          "http://127.0.0.1:5500",
-          "data:",
-        ],
-        mediaSrc: [
-          "'self'",
-          "https://my-portfolio-fe.onrender.com",
-          "http://127.0.0.1:5500",
-        ],
-        objectSrc: ["'none'"],
-        frameAncestors: ["'self'"],
-      },
-    },
-  })
-);
+app.use(helmet());
 
 // Cấu hình CORS — chỉ cho phép domain frontend gọi
 app.use(
   cors({
-    origin: ["https://my-portfolio-fe.onrender.com", "http://127.0.0.1:5500"],
+    origin: ["http://127.0.0.1:5500", "https://my-portfolio-fe.onrender.com"],
     methods: ["GET", "POST", "PUT", "DELETE"],
   })
 );
@@ -65,26 +41,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 app.use(express.json());
-
-// Static uploads với CORS riêng cho thẻ <img>/<video>
-
-const allowedOrigins = [
-  "https://my-portfolio-fe.onrender.com",
-  "http://127.0.0.1:5500",
-];
-
-app.use(
-  "/uploads",
-  (req, res, next) => {
-    const origin = req.get("Origin");
-    if (allowedOrigins.includes(origin)) {
-      res.header("Access-Control-Allow-Origin", origin);
-      res.header("Cross-Origin-Resource-Policy", "cross-origin");
-    }
-    next();
-  },
-  express.static(path.join(__dirname, "uploads"))
-);
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 //routers
 app.use("/api/projects", projectRoutes);
