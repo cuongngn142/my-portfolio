@@ -7,15 +7,15 @@ import {
   deleteContact,
   updateContactStatus,
 } from "../controllers/contact.controller.js";
-
+import checkApiKey from "../middleware/checkApiKey.js";
 const router = express.Router();
 
 router.get("/", getAllContacts);
 router.get("/:id", getContactById);
-router.post("/", createContact);
-router.put("/:id", updateContact);
-router.delete("/:id", deleteContact);
-router.put("/:id/status", updateContactStatus);
+router.post("/", checkApiKey, createContact);
+router.put("/:id", checkApiKey, updateContact);
+router.delete("/:id", checkApiKey, deleteContact);
+router.put("/:id/status", checkApiKey, updateContactStatus);
 export default router;
 
 /*

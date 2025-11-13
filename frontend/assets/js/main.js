@@ -1,5 +1,7 @@
-const url = "https://my-portfolio-1oua.onrender.com";
-//const url = "http://localhost:3000";
+import { URL_PROD, URL_LOCAL } from "./config.js";
+
+const url = URL_PROD;
+
 const navbar = document.querySelector(".navbar");
 
 window.addEventListener("scroll", () => {

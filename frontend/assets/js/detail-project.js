@@ -1,6 +1,6 @@
-const url = "https://my-portfolio-1oua.onrender.com";
-//const url = "http://localhost:3000";
+import { URL_PROD, URL_LOCAL } from "./config.js";
 
+const url = URL_PROD;
 async function loadProjectDetail() {
   const params = new URLSearchParams(window.location.search);
   const id = params.get("id");
