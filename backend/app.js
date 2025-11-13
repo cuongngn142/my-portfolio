@@ -1,6 +1,8 @@
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
+import helmet from "helmet";
+import rateLimit from "express-rate-limit";
 import { connectDB } from "./config/db.js";
 import projectRoutes from "./routes/protect.routes.js";
 import contactRoutes from "./routes/contact.routes.js";
@@ -12,7 +14,28 @@ connectDB();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-app.use(cors());
+
+//Cấu hình Helmet để bảo vệ header HTTP
+app.use(helmet());
+
+// Cấu hình CORS — chỉ cho phép domain frontend gọi
+app.use(
+  cors({
+    origin: ["https://my-portfolio-fe.onrender.com"],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+  })
+);
+
+//Giới hạn request — mỗi IP chỉ được gửi 100 request / 15 phút
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 phút
+  max: 100, // tối đa 100 request
+  message: {
+    success: false,
+    message: "Too many requests from this IP, please try again later.",
+  },
+});
+app.use(limiter);
 
 // Tạo lại __dirname do ES Module ("type": "module") ko có dir__name
 const __filename = fileURLToPath(import.meta.url);
