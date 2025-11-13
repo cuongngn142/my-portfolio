@@ -15,7 +15,22 @@ connectDB();
 const app = express();
 const PORT = process.env.PORT || 3000;
 //Cấu hình Helmet để bảo vệ header HTTP
-app.use(helmet());
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      directives: {
+        defaultSrc: ["'self'"],
+        scriptSrc: ["'self'"],
+        styleSrc: ["'self'", "'unsafe-inline'"],
+        imgSrc: ["*", "data:"], // cho phép mọi domain
+        mediaSrc: ["*"], // cho phép mọi domain
+        objectSrc: ["'none'"],
+        frameAncestors: ["'self'"],
+      },
+    },
+    crossOriginResourcePolicy: false, // tắt block same-origin resource policy
+  })
+);
 
 // Cấu hình CORS — chỉ cho phép domain frontend gọi
 app.use(
