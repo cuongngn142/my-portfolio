@@ -16,24 +16,35 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 //Cấu hình Helmet để bảo vệ header HTTP
-helmet({
-  contentSecurityPolicy: {
-    directives: {
-      defaultSrc: ["'self'"],
-      scriptSrc: ["'self'"],
-      styleSrc: ["'self'", "'unsafe-inline'"],
-      imgSrc: ["'self'", "https://my-portfolio-fe.onrender.com", "data:"],
-      mediaSrc: ["'self'", "https://my-portfolio-fe.onrender.com"],
-      objectSrc: ["'none'"],
-      frameAncestors: ["'self'"],
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      directives: {
+        defaultSrc: ["'self'"],
+        scriptSrc: ["'self'"],
+        styleSrc: ["'self'", "'unsafe-inline'"],
+        imgSrc: [
+          "'self'",
+          "https://my-portfolio-fe.onrender.com",
+          "http://127.0.0.1:5500",
+          "data:",
+        ],
+        mediaSrc: [
+          "'self'",
+          "https://my-portfolio-fe.onrender.com",
+          "http://127.0.0.1:5500",
+        ],
+        objectSrc: ["'none'"],
+        frameAncestors: ["'self'"],
+      },
     },
-  },
-});
+  })
+);
 
 // Cấu hình CORS — chỉ cho phép domain frontend gọi
 app.use(
   cors({
-    origin: ["https://my-portfolio-fe.onrender.com"],
+    origin: ["https://my-portfolio-fe.onrender.com", "http://127.0.0.1:5500"],
     methods: ["GET", "POST", "PUT", "DELETE"],
   })
 );
@@ -57,7 +68,10 @@ app.use(express.json());
 
 // Static uploads với CORS riêng cho thẻ <img>/<video>
 
-const allowedOrigins = ["https://my-portfolio-fe.onrender.com"];
+const allowedOrigins = [
+  "https://my-portfolio-fe.onrender.com",
+  "http://127.0.0.1:5500",
+];
 
 app.use(
   "/uploads",
