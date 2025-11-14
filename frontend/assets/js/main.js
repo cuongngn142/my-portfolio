@@ -59,11 +59,20 @@ function renderListProject(data) {
 }
 
 async function getProjects() {
+  const status = document.querySelector(".project-status");
+  status.textContent = "Đang tải dữ liệu...";
   try {
     const res = await fetch(`${url}/api/projects`);
     const data = await res.json();
+    if (data.length === 0) {
+      status.textContent = "Không có dữ liệu.";
+      return;
+    }
+    status.textContent = "";
+
     renderListProject(data);
   } catch (err) {
+    status.textContent = "Lỗi khi tải dữ liệu.";
     console.error(err);
   }
 }
