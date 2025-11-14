@@ -58,9 +58,14 @@ function renderListProject(data) {
   });
 }
 
+function wait(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
 async function getProjects() {
   const status = document.querySelector(".project-status");
   status.textContent = "Đang tải dữ liệu...";
+  await wait(3000);
   try {
     const res = await fetch(`${url}/api/projects`);
     const data = await res.json();
