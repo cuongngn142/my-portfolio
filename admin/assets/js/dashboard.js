@@ -1,4 +1,4 @@
-import { URL_LOCAL } from "./config.js";
+import { URL_LOCAL, URL_PROD } from "./config.js";
 
 const url = URL_PROD;
 
