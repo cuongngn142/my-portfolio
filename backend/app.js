@@ -35,7 +35,11 @@ app.use(
 // Cấu hình CORS — chỉ cho phép domain frontend gọi
 app.use(
   cors({
-    origin: ["http://127.0.0.1:5500", "https://my-portfolio-fe.onrender.com"],
+    origin: [
+      "http://127.0.0.1:5500",
+      "https://my-portfolio-fe.onrender.com",
+      "https://my-portfolio-dashboard-mh56.onrender.com",
+    ],
     methods: ["GET", "POST", "PUT", "DELETE"],
   })
 );
