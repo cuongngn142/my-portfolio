@@ -1,0 +1,29 @@
+body {
+  background: linear-gradient(to right, #e7e4e4, #e0e4f0, #b4d1da);
+  font-family: "Poppins", sans-serif;
+}
+
+.login-card input::placeholder {
+  font-size: 0.9rem;
+  color: #6c757d;
+}
+
+.btn-primary-light {
+  background-color: #5490df;
+  color: white;
+  border: none;
+  transition: all ease-in-out 0.3s;
+}
+.btn-primary-light:hover {
+  background-color: #6a95d1;
+  color: white;
+  transform: scale(1.02);
+}
+
+.active {
+  font-weight: bold;
+}
+
+.navbar-brand {
+  cursor: pointer;
+}

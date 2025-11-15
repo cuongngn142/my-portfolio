@@ -1,0 +1,119 @@
+<h1 class="mt-2">Projects</h1>
+<div class="row">
+  <div class="col-md-12">
+    <!-- Title + New Button -->
+    <div class="card p-3 mb-3">
+      <div class="d-flex align-items-center justify-content-between">
+        <div class="title">Project List</div>
+
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-bs-toggle="modal"
+          data-bs-target="#projectModal"
+          id="btnNewProject"
+        >
+          New Project
+        </button>
+      </div>
+    </div>
+
+    <!-- List -->
+    <div class="card p-3 mb-3">
+      <div class="d-flex flex-column card-project-list"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="projectModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalTitle">New Project</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+        ></button>
+      </div>
+
+      <div class="modal-body">
+        <form id="projectForm">
+          <input type="hidden" id="project-id" />
+
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label">Name</label>
+              <input type="text" class="form-control" id="project-name" />
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Timeline</label>
+              <input type="text" class="form-control" id="project-timeline" />
+            </div>
+
+            <div class="col-md-12">
+              <label class="form-label">Description</label>
+              <textarea class="form-control" id="project-desc"></textarea>
+            </div>
+
+            <div class="col-md-12">
+              <label class="form-label"
+                >Image URL (khi tải ảnh lên đợi vài giây tạo link ảnh)</label
+              >
+              <input type="text" class="form-control" id="project-img" />
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Role</label>
+              <input type="text" class="form-control" id="project-role" />
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Technology</label>
+              <input type="text" class="form-control" id="project-tech" />
+            </div>
+
+            <div class="col-md-12">
+              <label class="form-label"
+                >Main Features (cách nhau bằng dấu ,)</label
+              >
+              <input type="text" class="form-control" id="project-features" />
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Demo URL</label>
+              <input type="text" class="form-control" id="project-demo" />
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label">Source URL</label>
+              <input type="text" class="form-control" id="project-source" />
+            </div>
+
+            <div class="col-md-12">
+              <label class="form-label">Video Demo</label>
+              <input type="text" class="form-control" id="project-video" />
+            </div>
+
+            <div class="col-md-12">
+              <label class="form-label">Upload Image</label>
+              <input
+                type="file"
+                class="form-control"
+                id="project-file"
+                accept="image/*"
+              />
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button class="btn btn-primary" id="saveProjectBtn">Save</button>
+      </div>
+    </div>
+  </div>
+</div>

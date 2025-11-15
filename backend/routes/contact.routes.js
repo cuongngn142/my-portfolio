@@ -8,14 +8,22 @@ import {
   updateContactStatus,
 } from "../controllers/contact.controller.js";
 import checkApiKey from "../middleware/checkApiKey.js";
+import authenticateToken from "../middleware/authenticateToken.js";
+import authorize from "../middleware/authorize.js";
+
 const router = express.Router();
 
 router.get("/", getAllContacts);
 router.get("/:id", getContactById);
-router.post("/", checkApiKey, createContact);
-router.put("/:id", checkApiKey, updateContact);
-router.delete("/:id", checkApiKey, deleteContact);
-router.put("/:id/status", checkApiKey, updateContactStatus);
+router.post("/", createContact);
+router.put("/:id", authenticateToken, authorize("admin"), updateContact);
+router.delete("/:id", authenticateToken, authorize("admin"), deleteContact);
+router.put(
+  "/:id/status",
+  authenticateToken,
+  authorize("admin"),
+  updateContactStatus
+);
 export default router;
 
 /*

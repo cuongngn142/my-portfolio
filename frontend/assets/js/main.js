@@ -59,6 +59,8 @@ function renderListProject(data) {
 }
 
 function wait(ms) {
+  //setTimeout(callback, delay, arg1, arg2, ...) đưa resolve do promise tạo làm callback để thông báo cho await biết trạng thái hiện tại của promise
+
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 

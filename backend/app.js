@@ -6,7 +6,7 @@ import rateLimit from "express-rate-limit";
 import { connectDB } from "./config/db.js";
 import projectRoutes from "./routes/protect.routes.js";
 import contactRoutes from "./routes/contact.routes.js";
-
+import adminRoutes from "./routes/admin.routes.js";
 import path from "path";
 import { fileURLToPath } from "url";
 dotenv.config();
@@ -61,6 +61,7 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 //routers
 app.use("/api/projects", projectRoutes);
 app.use("/api/contacts", contactRoutes);
+app.use("/api/admins", adminRoutes);
 
 app.listen(PORT, () =>
   console.log(`🚀 Server running on http://localhost:${PORT}`)
